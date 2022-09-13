@@ -29,10 +29,10 @@ jobs:
       - name: Install Project Dependencies
         run: yarn install
 
-      - name: Firebase GitHub Action Testing Firestore Rules
-        uses: jonahsnider/firebase-action@1.0.7
-        env:
-          PROJECT_ID: "fiuber"
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Install Firebase Cli
+        uses: pocket-apps/action-setup-firebase@v2
         with:
-          args: emulators:exec --only firestore "yarn test:mocha --timeout 5000"
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+        
+      - name: Run Tests
+        run: yarn test
