@@ -32,7 +32,7 @@ jobs:
       - name: Firebase GitHub Action Testing Firestore Rules
         uses: jonahsnider/firebase-action@1.0.7
         env:
-          PROJECT_ID: "FIUBER"
+          PROJECT_ID: "fiuber"
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         with:
           args: emulators:exec --only firestore "yarn test:mocha --timeout 5000"
