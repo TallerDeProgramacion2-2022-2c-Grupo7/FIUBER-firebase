@@ -14,6 +14,7 @@
   },
   "scripts": {
     "test:mocha": "mocha --exit ./test",
-    "test": "firebase emulators:exec --only firestore \"yarn test:mocha --timeout 5000\""
+    "test": "firebase emulators:exec --only firestore \"yarn test:mocha --timeout 5000\"",
+    "deploy": "firebase deploy --only firestore:ruless"
   }
 }
