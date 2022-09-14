@@ -1,0 +1,20 @@
+{
+  "name": "FIUBER-firebase-rules",
+  "version": "0.0.1",
+  "description": "Here we gonna make the whole firebase configuration and testing",
+  "main": "index.js",
+  "repository": "git@github.com:TallerDeProgramacion2-2022-2c-Grupo7/FIUBER-firebase-rules.git",
+  "author": "aleacevedo",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@firebase/rules-unit-testing": "^2.0.4",
+    "firebase": "^9.9.4",
+    "mocha": "^10.0.0"
+  },
+  "scripts": {
+    "test:mocha": "mocha --exit ./test",
+    "test": "firebase emulators:exec --only firestore \"yarn test:mocha --timeout 5000\"",
+    "deploy": "firebase deploy --only firestore:ruless"
+  }
+}
