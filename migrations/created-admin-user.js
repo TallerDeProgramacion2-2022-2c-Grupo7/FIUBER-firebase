@@ -2,7 +2,8 @@ const FIRST_ADMIN = { email: 'fiubatallergrupo7@gmail.com', encryptedPassword: p
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = async (app) => {
-  const adminUser = await app.auth().getUserByEmail(FIRST_ADMIN.email);
+  console.log(FIRST_ADMIN)
+  const adminUser = await app.auth().getUserByEmail(FIRST_ADMIN.email).catch(() => undefined);
   const uuid = adminUser ? adminUser.uid : uuidv4();
   if (!adminUser) {
     await app.auth().importUsers(

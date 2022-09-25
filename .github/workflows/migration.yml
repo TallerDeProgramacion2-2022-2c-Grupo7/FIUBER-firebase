@@ -18,4 +18,5 @@ jobs:
       - name: Run migrations
         env:
           ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
-        run: export GOOGLE_APPLICATION_CREDENTIALS=service-account-file.json yarn migrate
+          GOOGLE_APPLICATION_CREDENTIALS: service-account-file.json
+        run: yarn migrate
