@@ -1,0 +1,21 @@
+name: Migration CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create firebase adminsdk JSON
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "service-account-file.json"
+          json: ${{ secrets.SERVICE_ACCOUNT_FILE }}
+      - name: Run migrations
+        env:
+          ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
+        run: export GOOGLE_APPLICATION_CREDENTIALS=service-account-file.json yarn migrate

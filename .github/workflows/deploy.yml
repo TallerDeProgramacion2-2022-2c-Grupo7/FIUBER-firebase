@@ -31,5 +31,8 @@ jobs:
         with:
           firebase-token: ${{ secrets.FIREBASE_TOKEN }}
         
-      - name: Run Tests
-        run: yarn deploy
+      - name: Deploy Rules
+        run: yarn deploy:rules
+
+      - name: Deploy Functions
+        run: yarn deploy:rule
