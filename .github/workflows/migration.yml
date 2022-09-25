@@ -9,12 +9,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Create firebase adminsdk JSON
         id: create-json
         uses: jsdaniell/create-json@1.1.2
         with:
           name: "service-account-file.json"
           json: ${{ secrets.SERVICE_ACCOUNT_FILE }}
+
+      - name: Install dependencies
+        run: yarn install
+
       - name: Run migrations
         env:
           ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
