@@ -1,5 +1,5 @@
 {
-  "name": "FIUBER-firebase-rules",
+  "name": "FIUBER-firebase",
   "version": "0.0.1",
   "description": "Here we gonna make the whole firebase configuration and testing",
   "main": "index.js",
@@ -10,11 +10,16 @@
   "dependencies": {
     "@firebase/rules-unit-testing": "^2.0.4",
     "firebase": "^9.9.4",
-    "mocha": "^10.0.0"
+    "firebase-admin": "^11.0.1",
+    "mocha": "^10.0.0",
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "test:mocha": "mocha --exit ./test",
     "test": "firebase emulators:exec --only firestore \"yarn test:mocha --timeout 5000\"",
-    "deploy": "firebase deploy --only firestore:ruless"
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "deploy:functions": "cd functions && yarn deploy",
+    "deploy": "yarn deploy:rules && yarn deploy:functions",
+    "migrate": "node migrations/index.js"
   }
 }
