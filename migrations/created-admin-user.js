@@ -1,4 +1,4 @@
-const FIRST_ADMIN = { email: 'fiubatallergrupo7@gmail.com', encryptedPassword: '' }
+const FIRST_ADMIN = { email: 'fiubatallergrupo7@gmail.com', encryptedPassword: process.env.ADMIN_PASSWORD_HASH }
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = async (app) => {
