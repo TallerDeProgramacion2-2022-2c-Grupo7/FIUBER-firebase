@@ -3,8 +3,6 @@ import * as admin from "firebase-admin";
 import { isAdminUser } from "./utils";
 
 export const createAdmin = functions.https.onCall(async (data, context) => {
-  admin.initializeApp();
-
   if (!isAdminUser(context.auth)) {
     throw new functions.https.HttpsError(
       "permission-denied",
